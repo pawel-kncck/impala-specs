@@ -120,7 +120,7 @@ graph TD
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│ IMPALA                                    [Docs] [Pricing] [Login] │
+│ IMPALA                                    [Docs] [Pricing] [Login]│
 ├─────────────────────────────────────────────────────────────────┤
 │                                                                 │
 │          From Data to Insights in Under 60 Seconds             │

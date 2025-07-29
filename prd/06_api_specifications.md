@@ -13,8 +13,110 @@ This section details the comprehensive REST API that powers the Impala applicati
 - **Rate Limiting:** Configurable rate limits per user and endpoint
 - **Pagination:** Cursor-based pagination for large result sets
 - **Real-time:** WebSocket support for live collaboration features
+- **Type Safety:** TypeScript type definitions generated from OpenAPI specification
 
-### 6.1.2. Base URL and Versioning
+### 6.1.2. TypeScript Integration
+
+The API provides comprehensive TypeScript support through:
+
+#### 6.1.2.1. Auto-generated Types
+
+```yaml
+type_generation:
+  source: OpenAPI 3.0 specification
+  generator: openapi-typescript
+  output: "@impala/api-types" npm package
+  features:
+    - Request/response type definitions
+    - Enum types for constants
+    - Discriminated unions for polymorphic responses
+    - Type-safe error handling
+```
+
+#### 6.1.2.2. TypeScript SDK
+
+```typescript
+// Example of type-safe API client usage
+import { ImpalaClient } from '@impala/typescript-sdk';
+import type { Project, Canvas, ChartGenerationRequest } from '@impala/api-types';
+
+const client = new ImpalaClient({
+  apiKey: process.env.IMPALA_API_KEY,
+  baseURL: 'https://api.impala.ai/v1'
+});
+
+// All methods are fully typed
+const project: Project = await client.projects.create({
+  name: 'Q4 Analysis',
+  description: 'Quarterly financial analysis'
+});
+
+// TypeScript ensures correct request structure
+const chart = await client.ai.generateChart({
+  prompt: 'Show revenue by month',
+  dataSourceId: project.dataSources[0].id,
+  chartType: 'bar' // Auto-completed enum
+} satisfies ChartGenerationRequest);
+```
+
+#### 6.1.2.3. Type Definitions Structure
+
+```typescript
+// Core domain types
+export interface User {
+  id: string;
+  email: string;
+  username: string;
+  firstName: string;
+  lastName: string;
+  organizationId: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  description?: string;
+  ownerId: string;
+  organizationId: string;
+  settings: ProjectSettings;
+  createdAt: string;
+  updatedAt: string;
+}
+
+// Request/Response types
+export interface CreateProjectRequest {
+  name: string;
+  description?: string;
+  settings?: Partial<ProjectSettings>;
+}
+
+export interface CreateProjectResponse {
+  success: boolean;
+  data: Project;
+  meta: ResponseMeta;
+}
+
+// Error types
+export interface APIError {
+  code: ErrorCode;
+  message: string;
+  details?: Record<string, unknown>;
+  requestId: string;
+}
+
+export enum ErrorCode {
+  VALIDATION_ERROR = 'VALIDATION_ERROR',
+  AUTHENTICATION_ERROR = 'AUTHENTICATION_ERROR',
+  AUTHORIZATION_ERROR = 'AUTHORIZATION_ERROR',
+  NOT_FOUND = 'NOT_FOUND',
+  RATE_LIMIT_EXCEEDED = 'RATE_LIMIT_EXCEEDED',
+  INTERNAL_ERROR = 'INTERNAL_ERROR'
+}
+```
+
+### 6.1.3. Base URL and Versioning
 
 ```
 Production: https://api.impala.ai/v1
@@ -22,14 +124,14 @@ Staging: https://api-staging.impala.ai/v1
 Development: http://localhost:8000/api/v1
 ```
 
-### 6.1.3. Authentication
+### 6.1.4. Authentication
 
 All protected endpoints require JWT authentication via the `Authorization` header:
 ```
 Authorization: Bearer <jwt_token>
 ```
 
-### 6.1.4. Standard Response Format
+### 6.1.5. Standard Response Format
 
 ```json
 {
@@ -44,7 +146,7 @@ Authorization: Bearer <jwt_token>
 }
 ```
 
-### 6.1.5. Error Response Format
+### 6.1.6. Error Response Format
 
 ```json
 {

@@ -78,7 +78,29 @@ The success of Impala will be measured against these primary metrics:
 - **System Availability:** >99.9% uptime
 - **AI Response Quality:** >90% user satisfaction rating for AI-generated content
 
-## 1.7. Document Structure
+## 1.7. Technology Stack Overview
+
+Impala is built on a modern, scalable technology stack designed for reliability, performance, and developer productivity:
+
+### 1.7.1. Frontend Technologies
+- **TypeScript:** The entire frontend is built with TypeScript for type safety, better tooling, and enhanced code quality
+- **React 18:** Modern React with hooks and concurrent features
+- **Mantine UI:** Comprehensive component library with accessibility built-in
+- **Tailwind CSS:** Utility-first CSS framework for rapid styling
+- **Vite:** Fast build tooling and development server
+
+### 1.7.2. Backend Technologies
+- **Python/FastAPI:** High-performance async API framework
+- **PostgreSQL:** Primary relational database
+- **Redis:** Caching and real-time features
+- **OpenAI API:** AI/LLM integration for intelligent features
+
+### 1.7.3. Infrastructure
+- **Docker/Kubernetes:** Container orchestration for scalability
+- **AWS:** Cloud infrastructure provider
+- **GitHub Actions:** CI/CD pipeline
+
+## 1.8. Document Structure
 
 This Product Requirements Document is organized into the following sections:
 
@@ -95,5 +117,6 @@ This Product Requirements Document is organized into the following sections:
 11. **Deployment & Operations** - Infrastructure and operational procedures
 12. **Success Metrics** - Key performance indicators and measurement frameworks
 13. **Roadmap & Phases** - Development phases and release planning
+14. **UX/UI Design Approach** - Comprehensive design system and implementation guidelines
 
 Each section includes detailed specifications, implementation notes, and success criteria to guide development and ensure consistent execution across all aspects of the product.
