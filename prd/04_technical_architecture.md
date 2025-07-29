@@ -30,6 +30,8 @@
 │ • Project Service           │ │ • Visualization Engine  │ │ • Comment Service       │
 │ • Auth Service              │ │ • AI Service            │ │ • Notification Service  │
 │ • File Service              │ │ • Transform Service     │ │ • Sharing Service       │
+│ • Context Service           │ │ • Pipeline Service      │ │ • Version Control       │
+│ • Onboarding Service        │ │ • Search & Discovery    │ │ • Message Queue         │
 └─────────────────────────────┘ └─────────────────────────┘ └─────────────────────────┘
                     │                         │                         │
                     └─────────────────────────┴─────────────────────────┘
@@ -124,6 +126,79 @@ endpoints:
   - POST /auth/revoke
   - GET /auth/validate
   - POST /auth/oauth/{provider}
+```
+
+#### 2.1.4. Context Service
+
+```yaml
+service: context-service
+responsibility: AI context management and business domain understanding
+technology:
+  language: Python
+  framework: FastAPI
+  database: PostgreSQL
+  vector_db: Pinecone/Weaviate
+  cache: Redis
+features:
+  - Business context storage and retrieval
+  - Domain knowledge persistence
+  - Context versioning and history
+  - Cross-project context sharing
+  - Semantic search capabilities
+  - Context-aware AI training
+architecture:
+  components:
+    - Context Storage: Versioned context data
+    - Knowledge Graph: Business relationships
+    - Semantic Engine: Context understanding
+    - Context Builder: Automated context extraction
+    - Sharing Manager: Cross-project context
+endpoints:
+  - POST /context/create
+  - GET /context/{project_id}
+  - PUT /context/{id}
+  - POST /context/search
+  - GET /context/history/{id}
+integrations:
+  - ai-service: Context-aware responses
+  - project-service: Project context association
+  - vector-db: Semantic similarity search
+```
+
+#### 2.1.5. Onboarding Service
+
+```yaml
+service: onboarding-service
+responsibility: User onboarding and guided experiences
+technology:
+  language: TypeScript
+  framework: Node.js/Express
+  database: PostgreSQL
+  cache: Redis
+features:
+  - 60-second onboarding flow
+  - Progressive feature disclosure
+  - Interactive tutorials
+  - Personalized recommendations
+  - Achievement tracking
+  - Multi-step workflows
+architecture:
+  components:
+    - Flow Engine: Dynamic workflow management
+    - Progress Tracker: User journey analytics
+    - Content Manager: Tutorial and guide content
+    - Personalization Engine: Adaptive experiences
+    - Analytics Collector: Onboarding metrics
+endpoints:
+  - POST /onboarding/start
+  - GET /onboarding/progress/{user_id}
+  - PUT /onboarding/step/{id}
+  - POST /onboarding/complete
+  - GET /onboarding/recommendations
+integrations:
+  - user-service: Profile-based personalization
+  - analytics-service: Usage pattern analysis
+  - notification-service: Progress notifications
 ```
 
 ### 2.2. Analytics Services
@@ -248,6 +323,94 @@ endpoints:
   - GET /transform/history/{id}
 ```
 
+#### 2.2.5. Pipeline Service
+
+```yaml
+service: pipeline-service
+responsibility: Automated ETL pipeline orchestration and management
+technology:
+  language: Python
+  framework: FastAPI
+  orchestrator: Apache Airflow
+  queue: RabbitMQ/AWS SQS
+  database: PostgreSQL
+  cache: Redis
+features:
+  - Visual pipeline builder
+  - Multi-step workflows
+  - Event-triggered pipelines
+  - Data quality validation
+  - Automatic retry mechanisms
+  - Pipeline versioning
+  - Performance monitoring
+  - Cost optimization
+architecture:
+  components:
+    - Workflow Engine: DAG orchestration via Airflow
+    - Pipeline Builder: Visual drag-and-drop interface
+    - Scheduler: Time and event-based triggers
+    - Quality Monitor: Data validation and alerts
+    - Resource Manager: Compute resource allocation
+    - Lineage Tracker: Data flow documentation
+    - Cost Optimizer: Resource usage optimization
+endpoints:
+  - POST /pipelines/create
+  - GET /pipelines
+  - PUT /pipelines/{id}
+  - POST /pipelines/{id}/run
+  - GET /pipelines/{id}/status
+  - GET /pipelines/{id}/logs
+  - POST /pipelines/{id}/schedule
+  - GET /pipelines/{id}/metrics
+integrations:
+  - transform-service: Data transformation logic
+  - data-sources: Source system connections
+  - notification-service: Pipeline alerts
+  - audit-service: Compliance logging
+```
+
+#### 2.2.6. Search & Discovery Service
+
+```yaml
+service: search-discovery-service
+responsibility: Full-text search and content discovery across platform
+technology:
+  language: Python
+  framework: FastAPI
+  search_engine: Elasticsearch/OpenSearch
+  database: PostgreSQL
+  cache: Redis
+features:
+  - Full-text search across all content
+  - Semantic search capabilities
+  - Data lineage discovery
+  - Content recommendations
+  - Auto-completion
+  - Search analytics
+  - Faceted search
+  - Real-time indexing
+architecture:
+  components:
+    - Search Engine: Elasticsearch cluster
+    - Indexer: Real-time content indexing
+    - Query Processor: Search query optimization
+    - Recommendation Engine: ML-based suggestions
+    - Analytics Collector: Search behavior tracking
+    - Facet Manager: Dynamic filter generation
+endpoints:
+  - POST /search/query
+  - GET /search/suggestions
+  - POST /search/index
+  - GET /search/lineage/{id}
+  - GET /search/recommendations
+  - GET /search/analytics
+integrations:
+  - all-services: Content indexing
+  - ai-service: Semantic search enhancement
+  - user-service: Personalized results
+  - analytics-service: Search metrics
+```
+
 ### 2.3. Collaboration Services
 
 #### 2.3.1. Real-time Sync Service
@@ -330,6 +493,92 @@ endpoints:
   - PUT /notifications/read
   - GET /notifications/preferences
   - PUT /notifications/preferences
+```
+
+#### 2.3.4. Version Control Service
+
+```yaml
+service: version-control-service
+responsibility: Advanced version control with branching and merging
+technology:
+  language: Go
+  framework: Gin
+  database: PostgreSQL
+  blob_storage: S3/Azure Blob
+  cache: Redis
+features:
+  - Git-like branching model
+  - Merge conflict resolution
+  - Advanced diff algorithms
+  - Rollback orchestration
+  - Version tagging and milestones
+  - Audit trails
+  - Binary diff for large files
+  - Collaborative merge workflows
+architecture:
+  components:
+    - Version Engine: Core versioning logic
+    - Branch Manager: Branch lifecycle management
+    - Merge Engine: Conflict resolution algorithms
+    - Diff Processor: Content comparison
+    - Blob Manager: Large file versioning
+    - Timeline Builder: Version history visualization
+    - Conflict Resolver: Interactive merge tools
+endpoints:
+  - POST /versions/create
+  - GET /versions/{resource_id}
+  - POST /versions/{id}/branches
+  - POST /versions/merge
+  - GET /versions/{id}/diff
+  - POST /versions/{id}/rollback
+  - GET /versions/{id}/conflicts
+  - PUT /versions/{id}/resolve
+integrations:
+  - all-services: Resource version tracking
+  - real-time-sync: Collaborative version control
+  - notification-service: Version change alerts
+  - audit-service: Change tracking
+```
+
+#### 2.3.5. Message Queue Service
+
+```yaml
+service: message-queue-service
+responsibility: Distributed message queuing and event streaming
+technology:
+  language: Go
+  message_broker: RabbitMQ/Apache Kafka
+  database: PostgreSQL (metadata)
+  monitoring: Prometheus
+features:
+  - Event-driven architecture
+  - Message routing and filtering
+  - Dead letter queues
+  - Message persistence
+  - Scalable consumers
+  - Exactly-once delivery
+  - Message replay capabilities
+  - Cross-service communication
+architecture:
+  components:
+    - Message Broker: RabbitMQ/Kafka clusters
+    - Router: Intelligent message routing
+    - Consumer Manager: Auto-scaling consumers
+    - DLQ Handler: Failed message processing
+    - Replay Engine: Message history replay
+    - Schema Registry: Message format validation
+endpoints:
+  - POST /messages/publish
+  - GET /messages/consume
+  - POST /messages/subscribe
+  - GET /messages/status
+  - POST /messages/replay
+  - GET /messages/metrics
+integrations:
+  - pipeline-service: ETL coordination
+  - real-time-sync: Live collaboration events
+  - notification-service: Async notifications
+  - all-services: Inter-service communication
 ```
 
 ## 3. Data Architecture
@@ -620,5 +869,266 @@ pipeline:
         - integration_tests
         - api_tests
         - performance_tests
-        - security_
+        - security_tests (DAST)
+        - chaos_engineering
+
+    - name: deploy
+      environments:
+        staging:
+          approval: automatic
+          tests: [smoke_tests, integration_tests]
+        production:
+          approval: manual
+          tests: [canary_deployment, full_regression]
+
+  rollback_strategy:
+    blue_green: true
+    canary_percentage: 10
+    automatic_rollback: true
+    health_checks:
+      - endpoint: /health
+      - metrics: error_rate < 1%
+      - duration: 5 minutes
+```
+
+## 6. Message Queue Infrastructure
+
+### 6.1. Event-Driven Architecture
+
+```yaml
+event_architecture:
+  message_broker:
+    primary: Apache Kafka
+    fallback: RabbitMQ
+    cluster_size: 3 brokers minimum
+    
+  topics:
+    user_events:
+      partitions: 12
+      replication_factor: 3
+      retention: 7 days
+      
+    project_events:
+      partitions: 24
+      replication_factor: 3
+      retention: 30 days
+      
+    canvas_events:
+      partitions: 48
+      replication_factor: 3
+      retention: 7 days
+      
+    pipeline_events:
+      partitions: 12
+      replication_factor: 3
+      retention: 90 days
+      
+    system_events:
+      partitions: 6
+      replication_factor: 3
+      retention: 30 days
+
+  consumers:
+    real_time_sync:
+      group_id: realtime-sync-group
+      auto_offset_reset: latest
+      max_poll_records: 100
+      
+    notification_processor:
+      group_id: notification-group
+      auto_offset_reset: earliest
+      max_poll_records: 50
+      
+    analytics_collector:
+      group_id: analytics-group
+      auto_offset_reset: earliest
+      max_poll_records: 1000
+      
+    pipeline_orchestrator:
+      group_id: pipeline-group
+      auto_offset_reset: earliest
+      max_poll_records: 10
+
+  schema_registry:
+    url: http://schema-registry:8081
+    compatibility: BACKWARD
+    security: SSL/SASL
+```
+
+### 6.2. Event Patterns
+
+```python
+# Event Schema Examples
+from typing import Dict, Any, Optional
+from datetime import datetime
+from enum import Enum
+
+class EventType(Enum):
+    USER_CREATED = "user.created"
+    USER_UPDATED = "user.updated"
+    PROJECT_CREATED = "project.created"
+    PROJECT_SHARED = "project.shared"
+    CANVAS_MODIFIED = "canvas.modified"
+    PIPELINE_STARTED = "pipeline.started"
+    PIPELINE_COMPLETED = "pipeline.completed"
+    PIPELINE_FAILED = "pipeline.failed"
+
+class BaseEvent:
+    def __init__(
+        self,
+        event_type: EventType,
+        source_service: str,
+        entity_id: str,
+        user_id: Optional[str] = None,
+        organization_id: Optional[str] = None,
+        metadata: Optional[Dict[str, Any]] = None
+    ):
+        self.event_id = str(uuid.uuid4())
+        self.event_type = event_type
+        self.source_service = source_service
+        self.entity_id = entity_id
+        self.user_id = user_id
+        self.organization_id = organization_id
+        self.timestamp = datetime.utcnow()
+        self.metadata = metadata or {}
+
+# Usage Examples
+class PipelineEventProducer:
+    async def pipeline_started(self, pipeline_id: str, user_id: str):
+        event = BaseEvent(
+            event_type=EventType.PIPELINE_STARTED,
+            source_service="pipeline-service",
+            entity_id=pipeline_id,
+            user_id=user_id,
+            metadata={
+                "pipeline_name": "Daily Sales Sync",
+                "estimated_duration": "5 minutes",
+                "scheduled": True
+            }
+        )
+        await self.publish_event(event)
+
+    async def pipeline_completed(self, pipeline_id: str, metrics: Dict):
+        event = BaseEvent(
+            event_type=EventType.PIPELINE_COMPLETED,
+            source_service="pipeline-service",
+            entity_id=pipeline_id,
+            metadata={
+                "duration": metrics["duration"],
+                "rows_processed": metrics["rows_processed"],
+                "success": True
+            }
+        )
+        await self.publish_event(event)
+```
+
+## 7. Enhanced Service Integration
+
+### 7.1. Cross-Service Communication
+
+```yaml
+communication_patterns:
+  synchronous:
+    protocol: HTTP/gRPC
+    timeout: 30 seconds
+    retry_policy:
+      max_attempts: 3
+      backoff: exponential
+      base_delay: 1s
+    circuit_breaker:
+      failure_threshold: 50%
+      recovery_time: 30s
+    
+  asynchronous:
+    protocol: Message Queue
+    delivery_guarantee: at_least_once
+    ordering: partition_key
+    batch_size: 100
+    
+  streaming:
+    protocol: WebSocket/Server-Sent Events
+    heartbeat: 30s
+    reconnect: automatic
+    buffer_size: 1000
+
+service_mesh:
+  technology: Istio
+  features:
+    - mTLS between services
+    - Traffic routing and load balancing
+    - Circuit breaker patterns
+    - Distributed tracing
+    - Metrics collection
+    - Security policies
+
+api_gateway:
+  rate_limiting:
+    per_user: 1000 requests/minute
+    per_api_key: 10000 requests/minute
+    burst_capacity: 2x rate limit
+    
+  caching:
+    strategy: Redis cluster
+    ttl: 5 minutes (default)
+    cache_keys: user_id, resource_id
+    
+  authentication:
+    jwt_validation: true
+    api_key_support: true
+    oauth_integration: true
+    
+  monitoring:
+    request_logging: enabled
+    metrics_collection: enabled
+    distributed_tracing: enabled
+```
+
+### 7.2. Data Flow Integration
+
+```yaml
+data_integration:
+  real_time_pipeline:
+    - source: User interactions
+    - processing: Stream processing (Apache Kafka Streams)
+    - destination: Real-time dashboards
+    - latency: < 100ms
+    
+  batch_pipeline:
+    - source: ETL pipelines
+    - processing: Apache Spark
+    - destination: Analytics database
+    - schedule: Configurable (hourly, daily, etc.)
+    
+  context_pipeline:
+    - source: All user interactions
+    - processing: NLP and semantic analysis
+    - destination: Context service
+    - update_frequency: Real-time
+    
+  search_pipeline:
+    - source: All content changes
+    - processing: Elasticsearch indexing
+    - destination: Search service
+    - latency: < 5 seconds
+
+project_lifecycle_integration:
+  creation:
+    - project-service: Create project record
+    - context-service: Initialize project context
+    - version-control-service: Create initial version
+    - search-service: Index project metadata
+    - notification-service: Notify team members
+    
+  collaboration:
+    - real-time-sync: Coordinate live editing
+    - version-control-service: Track changes
+    - comment-service: Handle discussions
+    - notification-service: Send updates
+    
+  automation:
+    - pipeline-service: Execute ETL workflows
+    - transform-service: Process data
+    - message-queue: Coordinate tasks
+    - monitoring-service: Track health
+```
 ```

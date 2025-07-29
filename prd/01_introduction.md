@@ -1,5 +1,3 @@
-Of course. Here is the revised introduction for the Impala PRD, formatted for the chat window.
-
 # 1. Introduction
 
 ## 1.1. Purpose
@@ -26,3 +24,76 @@ The success of Impala will be measured against the following high-level goals:
 - **Intelligent & Transparent AI Partnership:** Leverage LLMs as a smart assistant, not a black box. The goal is to use AI to understand data context, generate hypotheses, and write transparent, verifiable code for analysis, charts, and tables. This provides the speed of AI without sacrificing the trust and accuracy of traditional computation.
 - **Empowerment:** Enable non-technical users to conduct end-to-end data analysis independently. This means providing the tools to upload, clean, analyze, visualize, and share insights without writing code or requesting support from a data team.
 - **Trust:** Build a platform where every number and visualization is transparent and traceable back to its source. Users should feel confident in the insights they generate and share.
+
+## 1.4. Core Differentiators
+
+Impala stands apart from traditional BI tools and modern analytics platforms through several key innovations:
+
+### **1.4.1. Context-Aware AI Intelligence**
+Unlike generic AI assistants, Impala learns your specific business domain, terminology, and metrics. This creates a foundation where AI suggestions and analysis are contextually relevant and aligned with your business logic.
+
+### **1.4.2. 60-Second Time-to-Value**
+From first login to first meaningful insight in under 60 seconds. This radical efficiency is achieved through intelligent onboarding, smart defaults, and AI-accelerated data preparation.
+
+### **1.4.3. Transparent AI Partnership**
+AI assists but doesn't replace human judgment. Every AI-generated insight includes traceable logic, every chart shows its underlying data, and every narrative links back to source numbers.
+
+### **1.4.4. Real-Time Collaboration**
+Built for teams from day one. Multiple users can simultaneously edit canvases, see live presence indicators, and collaborate in real-time with conflict resolution and synchronized changes.
+
+### **1.4.5. Automated Data Operations**
+Sophisticated ETL pipelines with visual workflow builders, automated data quality monitoring, and intelligent scheduling - all accessible to non-technical users.
+
+## 1.5. Market Context
+
+### **1.5.1. Current Market Challenges**
+
+The data analytics market is dominated by tools that fall into two problematic categories:
+
+- **Traditional BI Tools** (Tableau, Power BI, Looker): Powerful but complex, requiring significant training and technical expertise. Time-to-value is measured in weeks or months.
+- **Simple Dashboard Tools** (ChartIO, Grafana): Easy to use but limited in capability, forcing users to choose between simplicity and power.
+
+### **1.5.2. The AI Analytics Opportunity**
+
+Recent advances in Large Language Models create an unprecedented opportunity to bridge this gap. However, most AI-powered analytics tools focus on automating analysis rather than empowering users, leading to "black box" solutions that sacrifice trust for convenience.
+
+Impala takes a different approach: AI as an intelligent co-pilot that enhances human capability while maintaining full transparency and control.
+
+## 1.6. Success Criteria
+
+The success of Impala will be measured against these primary metrics:
+
+### **1.6.1. User Experience Metrics**
+- **Time-to-First-Insight:** <60 seconds from registration to first meaningful visualization
+- **User Onboarding Completion:** >80% of new users complete the initial setup flow
+- **Feature Adoption:** >70% of active users utilize AI-assisted chart generation within first week
+
+### **1.6.2. Business Impact Metrics**
+- **Daily Active Users:** 10,000+ DAU within 12 months
+- **User Retention:** >60% monthly retention rate
+- **Enterprise Adoption:** 100+ organizations with >10 users each
+
+### **1.6.3. Technical Performance Metrics**
+- **Query Response Time:** <2 seconds for 90% of queries
+- **System Availability:** >99.9% uptime
+- **AI Response Quality:** >90% user satisfaction rating for AI-generated content
+
+## 1.7. Document Structure
+
+This Product Requirements Document is organized into the following sections:
+
+1. **Introduction** (this section) - Vision, goals, and success criteria
+2. **Features** - Detailed feature specifications with acceptance criteria
+3. **User Flows** - Comprehensive user experience design and wireframes
+4. **Technical Architecture** - System design and infrastructure requirements
+5. **Data Model** - Database schemas and data structure specifications
+6. **API Specifications** - RESTful API design and integration requirements
+7. **Testing Strategy** - Quality assurance and testing methodologies
+8. **AI/LLM Integration** - Large Language Model integration specifications
+9. **Security & Compliance** - Security framework and regulatory compliance
+10. **Performance Requirements** - Performance benchmarks and optimization
+11. **Deployment & Operations** - Infrastructure and operational procedures
+12. **Success Metrics** - Key performance indicators and measurement frameworks
+13. **Roadmap & Phases** - Development phases and release planning
+
+Each section includes detailed specifications, implementation notes, and success criteria to guide development and ensure consistent execution across all aspects of the product.
