@@ -902,28 +902,28 @@ event_architecture:
     primary: Apache Kafka
     fallback: RabbitMQ
     cluster_size: 3 brokers minimum
-    
+
   topics:
     user_events:
       partitions: 12
       replication_factor: 3
       retention: 7 days
-      
+
     project_events:
       partitions: 24
       replication_factor: 3
       retention: 30 days
-      
+
     canvas_events:
       partitions: 48
       replication_factor: 3
       retention: 7 days
-      
+
     pipeline_events:
       partitions: 12
       replication_factor: 3
       retention: 90 days
-      
+
     system_events:
       partitions: 6
       replication_factor: 3
@@ -934,17 +934,17 @@ event_architecture:
       group_id: realtime-sync-group
       auto_offset_reset: latest
       max_poll_records: 100
-      
+
     notification_processor:
       group_id: notification-group
       auto_offset_reset: earliest
       max_poll_records: 50
-      
+
     analytics_collector:
       group_id: analytics-group
       auto_offset_reset: earliest
       max_poll_records: 1000
-      
+
     pipeline_orchestrator:
       group_id: pipeline-group
       auto_offset_reset: earliest
@@ -1039,13 +1039,13 @@ communication_patterns:
     circuit_breaker:
       failure_threshold: 50%
       recovery_time: 30s
-    
+
   asynchronous:
     protocol: Message Queue
     delivery_guarantee: at_least_once
     ordering: partition_key
     batch_size: 100
-    
+
   streaming:
     protocol: WebSocket/Server-Sent Events
     heartbeat: 30s
@@ -1067,17 +1067,17 @@ api_gateway:
     per_user: 1000 requests/minute
     per_api_key: 10000 requests/minute
     burst_capacity: 2x rate limit
-    
+
   caching:
     strategy: Redis cluster
     ttl: 5 minutes (default)
     cache_keys: user_id, resource_id
-    
+
   authentication:
     jwt_validation: true
     api_key_support: true
     oauth_integration: true
-    
+
   monitoring:
     request_logging: enabled
     metrics_collection: enabled
@@ -1093,19 +1093,19 @@ data_integration:
     - processing: Stream processing (Apache Kafka Streams)
     - destination: Real-time dashboards
     - latency: < 100ms
-    
+
   batch_pipeline:
     - source: ETL pipelines
     - processing: Apache Spark
     - destination: Analytics database
     - schedule: Configurable (hourly, daily, etc.)
-    
+
   context_pipeline:
     - source: All user interactions
     - processing: NLP and semantic analysis
     - destination: Context service
     - update_frequency: Real-time
-    
+
   search_pipeline:
     - source: All content changes
     - processing: Elasticsearch indexing
@@ -1119,13 +1119,13 @@ project_lifecycle_integration:
     - version-control-service: Create initial version
     - search-service: Index project metadata
     - notification-service: Notify team members
-    
+
   collaboration:
     - real-time-sync: Coordinate live editing
     - version-control-service: Track changes
     - comment-service: Handle discussions
     - notification-service: Send updates
-    
+
   automation:
     - pipeline-service: Execute ETL workflows
     - transform-service: Process data
@@ -1141,44 +1141,44 @@ project_lifecycle_integration:
 frontend_stack:
   core_language:
     name: TypeScript
-    version: "5.x"
+    version: '5.x'
     rationale:
       - Type safety for large-scale applications
       - Enhanced IDE support and autocompletion
       - Compile-time error detection
       - Better refactoring capabilities
       - Self-documenting code through types
-      
+
   framework:
     name: React
-    version: "18.x"
+    version: '18.x'
     with_typescript: true
     configuration:
       - Strict mode enabled
       - Function components with hooks
       - Concurrent features enabled
-      
+
   build_tools:
     bundler: Vite
     type_checker: TypeScript compiler
     linter: ESLint with TypeScript parser
     formatter: Prettier
-    
+
   ui_libraries:
-    component_library: 
+    component_library:
       name: Mantine UI
-      version: "7.x"
+      version: '7.x'
       typescript_support: Full native TypeScript support
     styling:
       name: Tailwind CSS
-      version: "3.x"
+      version: '3.x'
       with_typescript: TypeScript configuration for custom plugins
-      
+
   state_management:
     primary: React Context + useReducer
     async_state: TanStack Query (React Query)
     form_state: React Hook Form with TypeScript
-    
+
   testing:
     unit_tests: Jest with TypeScript
     component_tests: React Testing Library
@@ -1229,39 +1229,47 @@ frontend_stack:
 interface TypeArchitecture {
   // Domain models matching backend schemas
   models: {
-    user: "src/types/models/user.ts";
-    project: "src/types/models/project.ts";
-    canvas: "src/types/models/canvas.ts";
-    dataSource: "src/types/models/dataSource.ts";
+    user: 'src/types/models/user.ts';
+    project: 'src/types/models/project.ts';
+    canvas: 'src/types/models/canvas.ts';
+    dataSource: 'src/types/models/dataSource.ts';
   };
-  
+
   // API types for request/response
   api: {
-    requests: "src/types/api/requests.ts";
-    responses: "src/types/api/responses.ts";
-    errors: "src/types/api/errors.ts";
+    requests: 'src/types/api/requests.ts';
+    responses: 'src/types/api/responses.ts';
+    errors: 'src/types/api/errors.ts';
   };
-  
+
   // UI component prop types
   components: {
-    props: "src/types/components/props.ts";
-    events: "src/types/components/events.ts";
-    state: "src/types/components/state.ts";
+    props: 'src/types/components/props.ts';
+    events: 'src/types/components/events.ts';
+    state: 'src/types/components/state.ts';
   };
-  
+
   // Utility types
   utilities: {
-    helpers: "src/types/utils/helpers.ts";
-    guards: "src/types/utils/guards.ts";
-    branded: "src/types/utils/branded.ts";
+    helpers: 'src/types/utils/helpers.ts';
+    guards: 'src/types/utils/guards.ts';
+    branded: 'src/types/utils/branded.ts';
   };
 }
 
 // Example of strict typing for API integration
 interface APIClient {
   get<T>(url: string, config?: RequestConfig): Promise<APIResponse<T>>;
-  post<T, D>(url: string, data: D, config?: RequestConfig): Promise<APIResponse<T>>;
-  put<T, D>(url: string, data: D, config?: RequestConfig): Promise<APIResponse<T>>;
+  post<T, D>(
+    url: string,
+    data: D,
+    config?: RequestConfig
+  ): Promise<APIResponse<T>>;
+  put<T, D>(
+    url: string,
+    data: D,
+    config?: RequestConfig
+  ): Promise<APIResponse<T>>;
   delete<T>(url: string, config?: RequestConfig): Promise<APIResponse<T>>;
 }
 
@@ -1348,22 +1356,22 @@ data_flow_typing:
     - Generated TypeScript types from OpenAPI spec
     - Runtime validation with Zod schemas
     - Type guards for response validation
-    
+
   state_management:
     - Discriminated unions for state machines
     - Immutable state updates with Immer
     - Type-safe action creators
-    
+
   component_props:
     - Strict prop types for all components
     - Generic components with type parameters
     - Event handler typing
-    
+
   form_handling:
     - Typed form schemas with Zod
     - Type-safe form state with React Hook Form
     - Validation error typing
-    
+
   routing:
     - Typed route parameters
     - Type-safe navigation hooks
@@ -1379,19 +1387,19 @@ typescript_standards:
     - Strict null checks
     - Strict function types
     - No unused variables/parameters
-    
+
   naming_conventions:
     - Interfaces: PascalCase with 'I' prefix optional
     - Types: PascalCase
     - Enums: PascalCase with singular names
     - Constants: UPPER_SNAKE_CASE
-    
+
   file_organization:
     - One component per file
     - Co-locate types with components
     - Separate type definition files for shared types
     - Index files for clean exports
-    
+
   documentation:
     - JSDoc comments for public APIs
     - Inline comments for complex logic
@@ -1408,13 +1416,13 @@ typescript_workflow:
     - ESLint with TypeScript rules
     - Prettier formatting
     - Unit test execution
-    
+
   ci_pipeline:
     - Type checking across entire codebase
     - Strict build with no warnings
     - Bundle size analysis
     - Type coverage reporting
-    
+
   ide_setup:
     - VS Code with TypeScript extensions
     - Real-time type checking
