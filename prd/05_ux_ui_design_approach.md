@@ -9,6 +9,7 @@ This document serves as the master index for Impala's comprehensive design syste
 ### 🎨 Core Design Philosophy
 
 1. **[Design Principles & Philosophy](./design/501_design_principles.md)**
+
    - Core design principles
    - Visual design language
    - Brand personality and emotions
@@ -23,6 +24,7 @@ This document serves as the master index for Impala's comprehensive design syste
 ### 🧩 Component System
 
 3. **[Component Design System](./design/503_component_system.md)**
+
    - Atomic design hierarchy
    - Component patterns and templates
    - Reusable UI components
@@ -37,6 +39,7 @@ This document serves as the master index for Impala's comprehensive design syste
 ### 📱 User Experience Patterns
 
 5. **[Page-Specific UX Patterns](./design/505_page_patterns.md)**
+
    - 60-second onboarding flow
    - Canvas editor design
    - Data upload experience
@@ -51,6 +54,7 @@ This document serves as the master index for Impala's comprehensive design syste
 ### 📐 Design Standards
 
 7. **[Responsive Design Strategy](./design/507_responsive_design.md)**
+
    - Mobile-first approach
    - Breakpoint system
    - Adaptive layouts
@@ -65,6 +69,7 @@ This document serves as the master index for Impala's comprehensive design syste
 ### 🛠️ Implementation & Quality
 
 9. **[Implementation Guidelines](./design/509_implementation.md)**
+
    - Component development patterns
    - Design tokens and theming
    - Code quality standards
@@ -79,6 +84,7 @@ This document serves as the master index for Impala's comprehensive design syste
 ### ✅ Testing & Evolution
 
 11. **[Design QA & Testing](./design/511_qa_testing.md)**
+
     - Design review checklist
     - User testing framework
     - Visual regression testing
